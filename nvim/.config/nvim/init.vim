@@ -1,20 +1,25 @@
+" Behavior sets
 set tabstop=2 softtabstop=2
 set shiftwidth=4
 set expandtab
 set smartindent
-set nowrap
+"set nowrap
 
-set guicursor=
-set relativenumber
-set nu
-set scrolloff=8
-set colorcolumn=80
+" Visual sets
+set guicursor=        " Thick cursor
+set relativenumber    " Display relative numbers
+set nu                " Current line number
+set scrolloff=8       " Offset while browsing through file
+set colorcolumn=80    " Vertical column at 80th character
+set signcolumn=yes    " Display additional column next to number
+set cmdheight=2       " Give more space for displaying messages
+syntax on             " Enable syntax highlighting
 
-set incsearch
+" Other sets
+set incsearch         " start searching while typing
 set hidden
 set noerrorbells
 
-set signcolumn=yes
 
 " Prepare VIM-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -23,9 +28,63 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" Share register with Copy&Paste
+set clipboard=unnamed
+set clipboard=unnamedplus
+
+" Install plugins
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
 
-Plug 'gruvbox-community/gruvbox'
+" telescope requirements...
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+
+Plug 'gruvbox-community/gruvbox' " color scheme
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'sbdchd/neoformat' " Prettier
+
+Plug 'tpope/vim-fugitive' " Git 
+
 call plug#end()
+
+" Color theme customizations
+colo gruvbox
+highlight Normal guibg=none
+
+" Neoformat configuration
+let g:neoformat_try_node_exe = 1
+let g:neoformat_enabled_javascript = ['prettier']
+
+" Neoformat format on save
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
+
+" Auto commands
+if has("autocmd")
+    autocmd bufwritepost init.vim source $MYVIMRC
+endif
+
+" Remaps
+let mapleader = " "
+
+nnoremap <leader>f <cmd>Neoformat<cr>
+nnoremap <leader>so% :so %<cr>
+nnoremap <leader>so :so ~/.config/nvim/init.vim<cr>
+nnoremap <leader>v :tabedit $MYVIMRC<cr>
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>
+nnoremap <leader>fr <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fg <cmd>Telescope git_status<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
