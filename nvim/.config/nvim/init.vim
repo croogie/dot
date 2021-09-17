@@ -3,7 +3,7 @@ set tabstop=2 softtabstop=2
 set shiftwidth=4
 set expandtab
 set smartindent
-"set nowrap
+set nowrap
 
 " Visual sets
 set guicursor=        " Thick cursor
@@ -84,7 +84,12 @@ nnoremap <leader>v :tabedit $MYVIMRC<cr>
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>
-nnoremap <leader>fr <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fg <cmd>Telescope git_status<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Git maps
+nnoremap <leader>g <cmd>Git<cr>
+nnoremap <leader>gc <cmd>Git commit<cr>
+nnoremap <leader>gw <cmd>Gwrite<cr>
+
