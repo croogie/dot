@@ -62,6 +62,7 @@ highlight Normal guibg=none
 
 " GitSigns configuration
 lua require('gitsigns').setup() 
+Gitsigns toggle_current_line_blame
 
 " Neoformat configuration
 let g:neoformat_try_node_exe = 1
