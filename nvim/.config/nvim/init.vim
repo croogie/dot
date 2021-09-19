@@ -52,12 +52,16 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'sbdchd/neoformat' " Prettier
 
 Plug 'tpope/vim-fugitive' " Git 
+Plug 'lewis6991/gitsigns.nvim' " Git signs
 
 call plug#end()
 
 " Color theme customizations
 colo gruvbox
 highlight Normal guibg=none
+
+" GitSigns configuration
+lua require('gitsigns').setup() 
 
 " Neoformat configuration
 let g:neoformat_try_node_exe = 1
