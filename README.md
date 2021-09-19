@@ -8,8 +8,11 @@ describe most important things…
 
 ## Installation
 
-Checkout this repository into `.dotfiles` in your home directory. 
+Checkout this repository into `.dotfiles` in your home directory:
 
+```
+git clone https://github.com/croogie/dot ~/.dotfiles --recursive
+```
 
 Depending on which system you're installing execute either `./macos` or `./unix` 
 scripts to perform installation and proper configuration of everything.
