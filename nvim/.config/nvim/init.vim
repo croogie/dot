@@ -54,6 +54,8 @@ Plug 'sbdchd/neoformat' " Prettier
 Plug 'tpope/vim-fugitive' " Git 
 Plug 'lewis6991/gitsigns.nvim' " Git signs
 
+Plug 'dbeniamine/cheat.sh-vim' " cht.sh in vim!!!!
+
 call plug#end()
 
 " Color theme customizations
