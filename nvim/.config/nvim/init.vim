@@ -44,6 +44,7 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
 
 Plug 'gruvbox-community/gruvbox' " color scheme
 
