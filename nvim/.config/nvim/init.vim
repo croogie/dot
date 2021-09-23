@@ -90,7 +90,8 @@ nnoremap <leader>so :so ~/.config/nvim/init.vim<cr>
 nnoremap <leader>v :tabedit $MYVIMRC<cr>
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--no-ignore', '--hidden', '-g', '!.git' }})<cr>
+nnoremap <leader>ff <cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>
+nnoremap <leader>fi <cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--no-ignore', '--hidden', '-g', '!.git' }})<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fg <cmd>Telescope git_status<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
