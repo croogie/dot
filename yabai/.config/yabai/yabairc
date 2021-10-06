@@ -1,21 +1,24 @@
 #!/usr/bin/env zsh
 
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
 # global settings
 yabai -m config mouse_follows_focus             off
 yabai -m config focus_follows_mouse             off
 yabai -m config window_placement                second_child
 yabai -m config window_topmost                  off
 yabai -m config window_shadow                   off
-yabai -m config window_border                   off
-yabai -m config window_border_placement         exterior
-yabai -m config window_border_width             10
-yabai -m config window_border_radius            10
-yabai -m config active_window_border_color      0xB2EBDBB2
+yabai -m config window_border                   on
+yabai -m config window_border_placement         inset
+yabai -m config window_border_width             4
+yabai -m config window_border_radius            4
+yabai -m config active_window_border_color      0xff55ff55
 yabai -m config normal_window_border_color      0xB2282828
 yabai -m config insert_window_border_color      0xB2EBDBB2
 yabai -m config window_opacity                  off
 yabai -m config split_ratio                     0.50
-yabai -m config auto_balance                    on
+yabai -m config auto_balance                    off
 yabai -m config mouse_modifier                  alt
 yabai -m config mouse_action1                   move
 yabai -m config mouse_action2                   resize
@@ -26,7 +29,7 @@ yabai -m config top_padding                     5
 yabai -m config bottom_padding                  5
 yabai -m config left_padding                    5
 yabai -m config right_padding                   5
-yabai -m config window_gap                      5
+yabai -m config window_gap                      10
 
 yabai -m config window_topmost                  on
 yabai -m config window_shadow                   float
@@ -45,13 +48,14 @@ yabai -m config --space 6 layout float
 
 # Unmanaged
 yabai -m rule --add app="^System Preferences$"  manage=off border=off
+yabai -m rule --add app="The Unarchiver" manage=off
 
 # Primary
 
 # Communication
-yabai -m rule --add app="Slack"                 space=2
-yabai -m rule --add app="Spark"                 space=2
-yabai -m rule --add app="Rambox"                space=2
-yabai -m rule --add title="Tip of the Day"      manage=off border=off
+# yabai -m rule --add app="Slack"                 space=2
+# yabai -m rule --add app="Spark"                 space=2
+# yabai -m rule --add app="Rambox"                space=2
+# yabai -m rule --add title="Tip of the Day"      manage=off border=off
 # Floating
 yabai -m rule --add app="^System Preferences$"  space=6
