@@ -57,7 +57,10 @@ Plug 'lewis6991/gitsigns.nvim' " Git signs
 
 Plug 'dbeniamine/cheat.sh-vim' " cht.sh in vim!!!!
 
+Plug 'folke/which-key.nvim' " Which key
 call plug#end()
+
+lua require("which-key").setup()
 
 " Color theme customizations
 colo gruvbox
