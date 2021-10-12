@@ -1,0 +1,11 @@
+{
+  "name": "cal.widget",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "date-fns": "^2.25.0",
+    "react": "^17.0.2",
+    "styled-components": "^5.3.1"
+  }
+}
