@@ -2,7 +2,7 @@
 # Navigation (focussing)
 ##############################################
 
-# Windows: Alt + [DIR]
+# Windows: Shift + Alt + [DIR]
 shift + alt - h : yabai -m window --focus west
 shift + alt - j : yabai -m window --focus south
 shift + alt - k : yabai -m window --focus north
@@ -18,7 +18,7 @@ alt - 6 : yabai -m space --focus 6
 alt - 7 : yabai -m space --focus 7
 alt - 8 : yabai -m space --focus 8
 
-# Monitors: Ctrl + Alt + [NUM]
+# Monitors: Shift + Alt + [NUM]
 shift + alt - 1  : yabai -m display --focus 1
 shift + alt - 2  : yabai -m display --focus 2
 
@@ -79,18 +79,35 @@ shift + alt - d : yabai -m window --resize right:40:0
 alt - f : yabai -m window --toggle zoom-fullscreen
 
 # Float and center
-alt - t : yabai -m window --toggle float;\
-          yabai -m window --grid 4:4:1:1:2:2
+alt - t : yabai -m window --toggle float
+
+# Sticky
+lctrl + alt + shift - s : yabai - m window --toggle sticky
 
 ##############################################
-# Floating
+##                  Stacks                  ##
+##############################################
+
+# Focus window up/down in stack
+ctrl + cmd - j: yabai -m window --focus stack.next
+ctrl + cmd - k : yabai -m window --focus stack.prev
+
+# Add the active window  to the window or stack to the {direction}
+# Note that this only works when the active window does *not* already belong to a stack
+cmd + ctrl - a : yabai -m window west --stack $(yabai -m query --windows --window | jq -r '.id')
+cmd + ctrl - s : yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id')
+cmd + ctrl - w : yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id')
+cmd + ctrl - d : yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id')
+
+##############################################
+#                  Floating                 ##
 ##############################################
 
 # Fill
 shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
 
 # Left
-shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
+#shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
 
 # Right
-shift + alt - right  : yabai -m window --grid 1:2:1:0:1:1
+#shift + alt - right  : yabai -m window --grid 1:2:1:0:1:1

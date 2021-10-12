@@ -3,59 +3,73 @@
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
-# global settings
-yabai -m config mouse_follows_focus             off
-yabai -m config focus_follows_mouse             off
-yabai -m config window_placement                second_child
-yabai -m config window_topmost                  off
-yabai -m config window_shadow                   off
-yabai -m config window_border                   on
-yabai -m config window_border_placement         inset
-yabai -m config window_border_width             4
-yabai -m config window_border_radius            4
-yabai -m config active_window_border_color      0xff55ff55
-yabai -m config normal_window_border_color      0xB2282828
-yabai -m config insert_window_border_color      0xB2EBDBB2
-yabai -m config window_opacity                  off
-yabai -m config split_ratio                     0.50
-yabai -m config auto_balance                    off
-yabai -m config mouse_modifier                  alt
-yabai -m config mouse_action1                   move
-yabai -m config mouse_action2                   resize
+# ---  Tiling Settings  --------------
 
-# general space settings
 yabai -m config layout                          bsp
+
 yabai -m config top_padding                     5
 yabai -m config bottom_padding                  5
 yabai -m config left_padding                    5
 yabai -m config right_padding                   5
 yabai -m config window_gap                      10
 
-yabai -m config window_topmost                  on
+yabai -m config mouse_follows_focus             off
+yabai -m config focus_follows_mouse             off
+
+yabai -m config window_topmost                  off
+yabai -m config window_opacity                  off
 yabai -m config window_shadow                   float
 
-# Space labels
+yabai -m config window_border                   on
+yabai -m config window_border_width             2
+yabai -m config active_window_border_color      0xff55ff55
+yabai -m config normal_window_border_color      0xB2282828
+yabai -m config insert_window_border_color      0xB2EBDBB2
+
+yabai -m config active_window_opacity           1.0
+yabai -m config normal_window_opacity           0.9
+yabai -m config split_ratio                     0.50
+
+yabai -m config auto_balance                    off
+
+yabai -m config mouse_modifier                  ctrl
+yabai -m config mouse_action1                   move
+yabai -m config mouse_action2                   resize
+yabai -m config mouse_drop_action               stack
+
+yabai -m config window_placement                second_child
+
+# general space settings
+yabai -m config external_bar                    main:0:70
+
+
+# Space labels ⇢ to review…
 yabai -m space 1 --label "Primary"
-yabai -m space 2 --label "Comms"
-yabai -m space 3 --label "Tools"
-yabai -m space 4 --label "Media"
-yabai -m space 5 --label "Social"
-yabai -m space 6 --label "Float"
-yabai -m space 7 --label "Secondary"
+yabai -m space 2 --label "Work"
+yabai -m space 3 --label "MyThings"
+yabai -m space 4 --label "Learn"
+yabai -m space 5 --label "Float"
+yabai -m space 6 --label "Secondary"
 
 # Space config
-yabai -m config --space 6 layout float
+yabai -m config --space 5 layout float
 
 # Unmanaged
-yabai -m rule --add app="^System Preferences$"  manage=off border=off
-yabai -m rule --add app="The Unarchiver" manage=off
+yabai -m rule --add app="^System Preferences$"                        manage=off border=off
+yabai -m rule --add app="Finder"                                      manage=off border=off
+yabai -m rule --add app="The Unarchiver"                              manage=off
+yabai -m rule --add app="OpenVPN Connect"                             manage=off
+yabai -m rule --add app="Kap" title="^Kapture .*$"                    manage=off
+yabai -m rule --add app="Google Chrome"                               space=Secondary
+yabai -m rule --add app="Google Chrome Canary"                        space=Secondary
+yabai -m rule --add app="Spark" title!="^Spark - (INBOX|CALENDAR)$"   manage=off sticky=on
+yabai -m rule --add app="Dash"                                        manage=off
 
-# Primary
+# Jetbrains apps
+yabai -m rule --add app="(PyCharm|WebStorm)"                          manage=off border=off
+yabai -m rule --add app="(PyCharm|WebStorm)" title=".*~/git.*"        manage=on border=on
 
-# Communication
-# yabai -m rule --add app="Slack"                 space=2
-# yabai -m rule --add app="Spark"                 space=2
-# yabai -m rule --add app="Rambox"                space=2
-# yabai -m rule --add title="Tip of the Day"      manage=off border=off
-# Floating
-yabai -m rule --add app="^System Preferences$"  space=6
+# IMs
+yabai -m rule --add app="Messenger"                                   layer=stack.first 
+yabai -m rule --add app="Messages"                                    layer=stack.first 
+yabai -m rule --add app="Slack"                                       layer=stack.first 
