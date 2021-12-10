@@ -50,10 +50,10 @@ ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
 ctrl + cmd - 2  : yabai -m window --display 2; yabai -m display --focus 2
 
 # Floating Move
-shift + ctrl - a : yabai -m window --move rel:-20:0
-shift + ctrl - s : yabai -m window --move rel:0:20
-shift + ctrl - w : yabai -m window --move rel:0:-20
-shift + ctrl - d : yabai -m window --move rel:20:0
+shift + ctrl - a : yabai -m window --stack west
+shift + ctrl - s : yabai -m window --stack south
+shift + ctrl - w : yabai -m window --stack north
+shift + ctrl - d : yabai -m window --stack east
 
 # Rotate
 alt - r : yabai -m space --rotate 90
@@ -78,11 +78,14 @@ shift + alt - d : yabai -m window --resize right:40:0
 # Fullscreen (still includes gaps)
 alt - f : yabai -m window --toggle zoom-fullscreen
 
-# Float and center
-alt - t : yabai -m window --toggle float
+# Toggles on windows
+alt - t         : yabai -m window --toggle float
+alt + shift - t : yabai -m window --toggle sticky
+alt - y         : yabai -m window --toggle topmost
+alt + shift - y : yabai -m window --toggle pip
 
-# Sticky
-lctrl + alt + shift - s : yabai - m window --toggle sticky
+ctrl + alt + cmd - m : open -a Messenger
+shift + ctrl + alt + cmd - 9 : open -a PyCharm
 
 ##############################################
 ##                  Stacks                  ##

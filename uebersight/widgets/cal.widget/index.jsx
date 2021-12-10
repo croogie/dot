@@ -16,11 +16,12 @@ export const refreshFrequency = 1000 * 30;
 
 export const className = `
   bottom: 5px;
-  left: 5px;
-  right: 5px;
+  left: 100px;
+  right: 300px;
   height: 65px;
   display: grid;
-  grid-template-columns: 400xp 1fr 400px;
+  // border: 1px dashed yellow;
+  grid-template-columns: auto 1fr auto;
   grid-template-rows: 1fr;
   grid-template-areas: "some cal spotify";
   color: #ccc;
@@ -93,13 +94,13 @@ const Day = styled.div`
   border: 1px solid
     ${({ previous, current, weekend }) => {
       if (current) return "white";
-      if (previous) return `rgba(255, 255, 255, ${weekend ? ".05" : ".1"})`;
-      return "transparent";
+      return `rgba(255, 255, 255, ${weekend ? ".05" : ".1"})`;
     }};
   color: ${({ previous }) =>
     previous ? "rgba(200, 200, 200, .3)" : "rgba(200, 200, 200, 1)"};
   padding: 0.5rem;
   text-align: center;
+  -webkit-backdrop-filter: blur(6px);
 
   &:hover {
     cursor: pointer;
@@ -120,9 +121,15 @@ const Calendar = ({ className }) => {
     <CalContainer className={className}>
       {getMonthDays().map((d, i) => (
         <Day
+          key={i}
           previous={d.getDate() < new Date().getDate()}
           current={d.getDate() === new Date().getDate()}
           weekend={[0, 6].includes(d.getDay())}
+          onClick={() =>
+            run(`./cal.widget/open-calendar ${dateFns.format(d, "d/MM/yyyy")}`)
+              .then((r) => console.log(r))
+              .catch((e) => console.error(e))
+          }
         >
           {dateFns.format(d, "do")}
           <br />
@@ -133,8 +140,6 @@ const Calendar = ({ className }) => {
   );
 };
 /////////// END: CALENDAR
-
-const Song = styled.div``;
 
 export const render = ({ output, data = [] }, dispatch) => {
   const [artist, title, url] = output.split("\n");

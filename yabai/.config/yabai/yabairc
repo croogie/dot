@@ -7,10 +7,10 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 yabai -m config layout                          bsp
 
-yabai -m config top_padding                     5
-yabai -m config bottom_padding                  5
-yabai -m config left_padding                    5
-yabai -m config right_padding                   5
+yabai -m config top_padding                     10
+yabai -m config bottom_padding                  10
+yabai -m config left_padding                    10
+yabai -m config right_padding                   10
 yabai -m config window_gap                      10
 
 yabai -m config mouse_follows_focus             off
@@ -20,11 +20,11 @@ yabai -m config window_topmost                  off
 yabai -m config window_opacity                  off
 yabai -m config window_shadow                   float
 
-yabai -m config window_border                   on
-yabai -m config window_border_width             2
-yabai -m config active_window_border_color      0xff55ff55
-yabai -m config normal_window_border_color      0xB2282828
-yabai -m config insert_window_border_color      0xB2EBDBB2
+yabai -m config window_border                   off
+#yabai -m config window_border_width             0
+#yabai -m config active_window_border_color      0xffffffff
+#yabai -m config normal_window_border_color      0xB2282828
+#yabai -m config insert_window_border_color      0xB2EBDBB2
 
 yabai -m config active_window_opacity           1.0
 yabai -m config normal_window_opacity           0.9
@@ -32,7 +32,7 @@ yabai -m config split_ratio                     0.50
 
 yabai -m config auto_balance                    off
 
-yabai -m config mouse_modifier                  ctrl
+yabai -m config mouse_modifier                  alt
 yabai -m config mouse_action1                   move
 yabai -m config mouse_action2                   resize
 yabai -m config mouse_drop_action               stack
@@ -59,17 +59,21 @@ yabai -m rule --add app="^System Preferences$"                        manage=off
 yabai -m rule --add app="Finder"                                      manage=off border=off
 yabai -m rule --add app="The Unarchiver"                              manage=off
 yabai -m rule --add app="OpenVPN Connect"                             manage=off
-yabai -m rule --add app="Kap" title="^Kapture .*$"                    manage=off
 yabai -m rule --add app="Google Chrome"                               space=Secondary
 yabai -m rule --add app="Google Chrome Canary"                        space=Secondary
-yabai -m rule --add app="Spark" title!="^Spark - (INBOX|CALENDAR)$"   manage=off sticky=on
-yabai -m rule --add app="Dash"                                        manage=off
+yabai -m rule --add app="Spark" title!="^Spark - (INBOX|CALENDAR)$"   manage=off
+yabai -m rule --add app="Dash"                                        manage=off border=off
+yabai -m rule --add app="Bartender.*"                                 manage=off border=off
+yabai -m rule --add app="Kap"                                         manage=off border=off
+yabai -m rule --add app="zoom.us"                                     manage=off sticky=on border=off
+yabai -m rule --add app="Docker Desktop"                              manage=off border=off
+yabai -m rule --add app="VLC"                                         manage=off border=off
 
 # Jetbrains apps
-yabai -m rule --add app="(PyCharm|WebStorm)"                          manage=off border=off
-yabai -m rule --add app="(PyCharm|WebStorm)" title=".*~/git.*"        manage=on border=on
+yabai -m rule --add app="(PyCharm|WebStorm)"                                        manage=off border=off
+yabai -m rule --add app="(PyCharm|WebStorm)" title="^[\w\.\s]+( \[[^\]]+\])? – .+$" manage=on border=on
 
 # IMs
-yabai -m rule --add app="Messenger"                                   layer=stack.first 
-yabai -m rule --add app="Messages"                                    layer=stack.first 
-yabai -m rule --add app="Slack"                                       layer=stack.first 
+#yabai -m rule --add app="Messenger"                                   layer=stack.first
+#yabai -m rule --add app="Messages"                                    layer=stack.first
+#yabai -m rule --add app="Slack"                                       layer=stack.first
